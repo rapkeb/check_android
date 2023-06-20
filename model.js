@@ -54,7 +54,7 @@ navigator.mediaDevices.enumerateDevices()
 
     audioInputDevices.forEach(device => {
       alert('Device ID:', device.deviceId);
-      alert('Device Label:', device.label);
+      alert('Device Label:', device.kind);
       alert('---');
     });
   })
