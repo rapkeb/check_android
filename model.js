@@ -2,6 +2,7 @@ const text_area = document.querySelector('#text_area');
 
 var SpeechRecognition = webkitSpeechRecognition;
 //|| SpeechRecognition
+//sdsd
 var recognition = new SpeechRecognition();
 
 function runSpeechRecognition() {
