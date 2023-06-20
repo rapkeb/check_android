@@ -48,4 +48,18 @@ function runSpeechRecognition() {
     recognition.start();
 }
 
+navigator.mediaDevices.enumerateDevices()
+  .then(devices => {
+    const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
+
+    audioInputDevices.forEach(device => {
+      alert('Device ID:', device.deviceId);
+      alert('Device Label:', device.label);
+      alert('---');
+    });
+  })
+  .catch(error => {
+    alert('Error accessing media devices:', error);
+  });
+
 runSpeechRecognition();
