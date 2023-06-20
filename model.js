@@ -53,9 +53,10 @@ navigator.mediaDevices.enumerateDevices()
     const audioInputDevices = devices;
 
     audioInputDevices.forEach(device => {
-      alert(device.deviceId);
-      alert(device.kind);
-      alert('---');
+      if(device.kind === 'audioinput')
+      {
+        recognition.mediaStream = device.deviceId;
+      }
     });
   })
   .catch(error => {
