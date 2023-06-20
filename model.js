@@ -50,7 +50,7 @@ function runSpeechRecognition() {
 
 navigator.mediaDevices.enumerateDevices()
   .then(devices => {
-    const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
+    const audioInputDevices = devices;
 
     audioInputDevices.forEach(device => {
       alert('Device ID:', device.deviceId);
