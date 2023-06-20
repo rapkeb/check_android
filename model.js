@@ -50,17 +50,15 @@ function runSpeechRecognition() {
 
 navigator.mediaDevices.enumerateDevices()
   .then(devices => {
-    const audioInputDevices = devices;
-
-    audioInputDevices.forEach(device => {
-      if(device.kind === 'audioinput')
-      {
-        recognition.mediaStream = device.deviceId;
-      }
-    });
+    const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
+    if(audioInputDevices.length > 1)
+    {
+        alert("here");
+        recognition.mediaStream = audioInputDevices[0].deviceId;
+    }
   })
   .catch(error => {
-    alert('Error accessing media devices:', error);
+    console.error('Error accessing media devices:', error);
   });
 
 runSpeechRecognition();
