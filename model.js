@@ -1,10 +1,11 @@
 const text_area = document.querySelector('#text_area');
 
-var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+var SpeechRecognition = SpeechRecognition;
+//|| webkitSpeechRecognition
 var recognition = new SpeechRecognition();
 
 function runSpeechRecognition() {
-    recognition.continuous = false;
+    recognition.continuous = true;
     recognition.interimResults = true;
     recognition.lang = "en-US";
 
