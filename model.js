@@ -102,7 +102,7 @@ navigator.mediaDevices.enumerateDevices()
     alert(audioInputDevices.length);
     if(audioInputDevices.length > 1)
     {
-        recognition.mediaStream = audioInputDevices[0].deviceId;
+        recognition.mediaStream = audioInputDevices[1].deviceId;
         alert("here1");
     }
   })
