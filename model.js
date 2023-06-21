@@ -99,30 +99,34 @@ init();
 navigator.mediaDevices.enumerateDevices()
   .then(devices => {
     const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
-    alert(audioInputDevices.length);
-    if(audioInputDevices.length > 1)
-    {
-        recognition.mediaStream = audioInputDevices[1].deviceId;
-        alert("here1");
+    if (audioInputDevices.length > 1) {
+      const audioSourceRecognition = audioInputDevices[0].deviceId;
+      const audioSourceRecognizerHome = audioInputDevices[1].deviceId;
+
+      // Configure recognition with the first audio source
+      recognition.mediaStream = { audio: { deviceId: audioSourceRecognition } };
+
+      // Create the recognizer_home with the second audio source
+      navigator.mediaDevices.getUserMedia({ audio: { deviceId: audioSourceRecognizerHome } })
+        .then(audioStream => {
+          createModel(URL_HOME, audioStream)
+            .then(recognizer => {
+              recognizer_home = recognizer;
+              init(recognizer_home);
+            })
+            .catch(error => {
+              console.error('Error creating model:', error);
+            });
+        })
+        .catch(error => {
+          console.error('Error accessing audio stream:', error);
+        });
+    } else {
+      console.error('No suitable audio input devices found.');
     }
   })
   .catch(error => {
     console.error('Error accessing media devices:', error);
-  });
-
-  navigator.mediaDevices.getUserMedia({ audio: true })
-  .then(audioStream => {
-    createModel(URL_HOME, audioStream)
-      .then(recognizer => {
-        // Use the recognizer object with the custom audio source
-        init(recognizer);
-      })
-      .catch(error => {
-        console.error('Error creating model:', error);
-      });
-  })
-  .catch(error => {
-    console.error('Error accessing audio stream:', error);
   });
 
 runSpeechRecognition();
