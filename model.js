@@ -96,6 +96,7 @@ function runSpeechRecognition() {
 
 navigator.mediaDevices.enumerateDevices()
   .then(devices => {
+    alert("ffff");
     const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
     alert(audioInputDevices.length);
     if (audioInputDevices.length > 1) {
@@ -110,6 +111,7 @@ navigator.mediaDevices.enumerateDevices()
         .then(audioStream => {
           createModel(URL_HOME, audioStream)
             .then(recognizer => {
+                alert("yes");
               recognizer_home = recognizer;
               init(recognizer_home);
               runSpeechRecognition();
