@@ -110,12 +110,12 @@ navigator.mediaDevices.enumerateDevices()
       // Create the recognizer_home with the second audio source
       navigator.mediaDevices.getUserMedia({ audio: { deviceId: audioSourceRecognizerHome } })
         .then(audioStream => {
+          runSpeechRecognition();
           createModel(URL_HOME, audioStream)
             .then(recognizer => {
                 alert("yes");
               recognizer_home = recognizer;
               //init(recognizer_home);
-              runSpeechRecognition();
             })
             .catch(error => {
               console.error('Error creating model:', error);
