@@ -104,7 +104,7 @@ navigator.mediaDevices.enumerateDevices()
       const audioSourceRecognizerHome = audioInputDevices[2].deviceId;
 
       // Configure recognition with the first audio source
-      //recognition.mediaStream = audioSourceRecognition;
+      recognition.mediaStream = audioSourceRecognition;
 
       // Create the recognizer_home with the second audio source
       navigator.mediaDevices.getUserMedia({ audio: { deviceId: audioSourceRecognizerHome } })
