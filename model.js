@@ -17,14 +17,25 @@ const URL_HOME = "https://teachablemachine.withgoogle.com/models/eNZBwWr8h/";
 async function createModel(URL, audioSource) {
     const checkpointURL = URL + "model.json"; // model topology
     const metadataURL = URL + "metadata.json"; // model metadata
-  
+    
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      
+    console.log('Before pausing');
+    
+    // Pause execution for 2 seconds (2000 milliseconds)
+    await sleep(10000);
+    
+    console.log('After pausing');
+
     const recognizer = speechCommands.create(
       "BROWSER_FFT", // fourier transform type, not useful to change
       undefined, // speech commands vocabulary feature, not useful for your models
       checkpointURL,
       metadataURL
     );
-  
+
     // Set a custom audio source for the recognizer
     recognizer.audioContext = new AudioContext();
     recognizer.source = recognizer.audioContext.createMediaStreamSource(audioSource);
@@ -109,10 +120,9 @@ navigator.mediaDevices.enumerateDevices()
       // Create the recognizer_home with the second audio source
       navigator.mediaDevices.getUserMedia({ audio: { deviceId: audioSourceRecognizerHome } })
         .then(audioStream => {
-          //runSpeechRecognition();
+          runSpeechRecognition();
           createModel(URL_HOME, audioStream)
             .then(recognizer => {
-              runSpeechRecognition();
               alert("yes");
               recognizer_home = recognizer;
               //init(recognizer_home);
