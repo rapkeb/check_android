@@ -87,6 +87,7 @@ function runSpeechRecognition() {
         for (let i = event.resultIndex; i < event.results.length; i++) {
             result += event.results[i][0].transcript;
         }
+        alert(result);
         text_area.innerHTML = result;
       };
 
