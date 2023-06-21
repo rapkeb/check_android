@@ -72,6 +72,7 @@ async function init(recognizer_home) {
 }
 
 function runSpeechRecognition() {
+    alert("run speech");
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.lang = "en-US";
@@ -100,11 +101,11 @@ navigator.mediaDevices.enumerateDevices()
     const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
     alert(audioInputDevices.length);
     if (audioInputDevices.length > 1) {
-      const audioSourceRecognition = audioInputDevices[0].deviceId;
+      //const audioSourceRecognition = audioInputDevices[0].deviceId;
       const audioSourceRecognizerHome = audioInputDevices[2].deviceId;
 
       // Configure recognition with the first audio source
-      recognition.mediaStream = audioSourceRecognition;
+      //recognition.mediaStream = audioSourceRecognition;
 
       // Create the recognizer_home with the second audio source
       navigator.mediaDevices.getUserMedia({ audio: { deviceId: audioSourceRecognizerHome } })
