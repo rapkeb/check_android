@@ -111,15 +111,15 @@ navigator.mediaDevices.enumerateDevices()
       navigator.mediaDevices.getUserMedia({ audio: { deviceId: audioSourceRecognizerHome } })
         .then(audioStream => {
           runSpeechRecognition();
-          createModel(URL_HOME, audioStream)
-            .then(recognizer => {
-                alert("yes");
-              recognizer_home = recognizer;
-              //init(recognizer_home);
-            })
-            .catch(error => {
-              console.error('Error creating model:', error);
-            });
+        //   createModel(URL_HOME, audioStream)
+        //     .then(recognizer => {
+        //         alert("yes");
+        //       recognizer_home = recognizer;
+        //       //init(recognizer_home);
+        //     })
+        //     .catch(error => {
+        //       console.error('Error creating model:', error);
+        //     });
         })
         .catch(error => {
           console.error('Error accessing audio stream:', error);
