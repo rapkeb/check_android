@@ -94,8 +94,6 @@ function runSpeechRecognition() {
     recognition.start();
 }
 
-init();
-
 navigator.mediaDevices.enumerateDevices()
   .then(devices => {
     const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
