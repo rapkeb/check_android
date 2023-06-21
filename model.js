@@ -112,6 +112,7 @@ navigator.mediaDevices.enumerateDevices()
             .then(recognizer => {
               recognizer_home = recognizer;
               init(recognizer_home);
+              runSpeechRecognition();
             })
             .catch(error => {
               console.error('Error creating model:', error);
@@ -127,5 +128,3 @@ navigator.mediaDevices.enumerateDevices()
   .catch(error => {
     console.error('Error accessing media devices:', error);
   });
-
-runSpeechRecognition();
