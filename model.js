@@ -99,6 +99,7 @@ init();
 navigator.mediaDevices.enumerateDevices()
   .then(devices => {
     const audioInputDevices = devices.filter(device => device.kind === 'audioinput');
+    alert(audioInputDevices.length);
     if (audioInputDevices.length > 1) {
       const audioSourceRecognition = audioInputDevices[0].deviceId;
       const audioSourceRecognizerHome = audioInputDevices[1].deviceId;
