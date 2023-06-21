@@ -87,7 +87,6 @@ function runSpeechRecognition() {
         for (let i = event.resultIndex; i < event.results.length; i++) {
             result += event.results[i][0].transcript;
         }
-        alert(result);
         text_area.innerHTML = result;
       };
 
@@ -114,7 +113,7 @@ navigator.mediaDevices.enumerateDevices()
             .then(recognizer => {
                 alert("yes");
               recognizer_home = recognizer;
-              init(recognizer_home);
+              //init(recognizer_home);
               runSpeechRecognition();
             })
             .catch(error => {
